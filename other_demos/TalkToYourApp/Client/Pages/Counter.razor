@@ -1,0 +1,20 @@
+﻿@page "/counter/"
+@page "/counter/{currentCount:int}"
+
+@attribute [Description("This is a counter page. You can use it to count things. The initial counter value can be set by specifying the OPTIONAL currentCount parameter in the URL.")]
+
+<PageTitle>Counter</PageTitle>
+
+<MudText Typo="Typo.h3" GutterBottom="true">Counter</MudText>
+<MudText Class="mb-4">Current count: @CurrentCount</MudText>
+<MudButton Color="Color.Primary" Variant="Variant.Filled" @onclick="IncrementCount">Click me</MudButton>
+
+@code {
+    [Parameter]
+    public int CurrentCount { get; set; } = 0;
+
+    private void IncrementCount()
+    {
+        CurrentCount++;
+    }
+}

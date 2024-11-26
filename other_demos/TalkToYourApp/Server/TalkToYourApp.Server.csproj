@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	  <UserSecretsId>70165b9a-cfca-46ac-9709-d67c625be4c8</UserSecretsId>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.1" />
+		<PackageReference Include="Yarp.ReverseProxy" Version="2.1.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Client\TalkToYourApp.Client.csproj" />
+		<ProjectReference Include="..\Shared\TalkToYourApp.Shared.csproj" />
+	</ItemGroup>
+
+
+</Project>

@@ -1,0 +1,49 @@
+﻿@page "/userCreation"
+
+
+<MudText Typo="Typo.h3" GutterBottom="true">User Creation Form</MudText>
+
+<FluxorEditForm InitialValues="_initialValues" @ref="_form" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator/>
+    <MudGrid>
+        <MudItem xs="12" sm="7">
+            <MudCard>
+                <MudCardContent>
+                    <MudTextField Label="First name" HelperText="Max. 8 characters"
+                                  @bind-Value="Model!.Username" For="@(() => Model!.Username)"/>
+                    <MudTextField Label="Email" Class="mt-3"
+                                  @bind-Value="Model.Email" For="@(() => Model.Email)"/>
+                    <MudTextField Label="Password" HelperText="Choose a strong password" Class="mt-3"
+                                  @bind-Value="Model.Password" For="@(() => Model.Password)" InputType="InputType.Password"/>
+                    <MudTextField Label="Password" HelperText="Repeat the password" Class="mt-3"
+                                  @bind-Value="Model.Password2" For="@(() => Model.Password2)" InputType="InputType.Password"/>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Register</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="12" sm="5">
+            <MudPaper Class="pa-4 mud-height-full">
+                <MudText Typo="Typo.subtitle2">Validation Summary</MudText>
+                @if (success)
+                {
+                    <MudText Color="Color.Success">Success</MudText>
+                }
+                else
+                {
+                    <MudText Color="@Color.Error">
+                        <ValidationSummary />
+                    </MudText>
+                }
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12">
+            <MudText Typo="Typo.body2" Align="Align.Center">
+                Fill out the form correctly to see the success message.
+            </MudText>
+        </MudItem>
+    </MudGrid>
+
+    <MudButton Color="Color.Primary" Variant="Variant.Outlined" OnClick="Test">Test</MudButton>
+</FluxorEditForm>

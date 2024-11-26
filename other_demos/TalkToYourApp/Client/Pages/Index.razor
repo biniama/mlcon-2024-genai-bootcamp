@@ -1,0 +1,26 @@
+﻿@page "/"
+@attribute [Description("This is the main entry page into the application.")]
+
+@using TalkToYourApp.Client.Features.AI_Integration
+
+<PageTitle>Index</PageTitle>
+
+<MudText Typo="Typo.h3" GutterBottom="true">Hello, User!</MudText>
+<MudText Class="mb-8">Welcome to your new app, powered by the generative AI Talk To Your App!</MudText>
+
+<MudTextField Label="What can I do for you today?" @bind-Value="Question" Lines="3" Variant="Variant.Filled" />
+<br/>
+<MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="AskTTYA">Ask "Talk To Your App"</MudButton>
+
+@code {
+    [Inject]
+    public TalkToYourAppAI TalkToYourApp { get; set; } = null!;
+
+    public string Question { get; set; } = String.Empty;
+
+    public async Task AskTTYA()
+    {
+        var answer = await TalkToYourApp.ExecuteUserRequest(Question);
+        Console.WriteLine(answer);
+    }
+}

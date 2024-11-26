@@ -1,0 +1,32 @@
+﻿@inherits LayoutComponentBase
+@using TalkToYourApp.Client.Features.Layout
+
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MainApplicationBar OnDrawerToggleCallback="@(DrawerToggle)"/>
+
+    <LeftMainDrawer DrawerOpen="@_drawerOpen" />
+
+    <MudMainContent>
+        <!-- Classes for Spacing, see:
+             https://www.mudblazor.com/utilities/spacing
+
+             In short: Margin (outer spacing) | Border | Padding (inner spacing) | Content
+                t - top
+                b - bottom
+                l - left
+                r - right
+                x - x-axis: left and right
+                y - y-axis: top and bottom
+                s - start (left in ltr, right in rtl)
+                e - end (right in ltr, left in rtl)
+                a - all: all 4 sides
+        -->
+        <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="py-8" Style="height: 100%;">
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
